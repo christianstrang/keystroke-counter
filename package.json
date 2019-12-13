@@ -1,0 +1,23 @@
+{
+  "name": "keystroke-counter",
+  "version": "0.0.1",
+  "description": "Analyzes how many keystrokes are necessary to type the specified word, based on language provided. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christianstrang/keystroke-counter.git"
+  },
+  "keywords": [
+    "wpm",
+    "keystrokes"
+  ],
+  "author": "Christian Strang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christianstrang/keystroke-counter/issues"
+  },
+  "homepage": "https://github.com/christianstrang/keystroke-counter#readme"
+}
