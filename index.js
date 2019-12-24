@@ -1,4 +1,12 @@
-function analyze(word, language) {
+/*
+  word (string) = the word that is analyzed
+  ISO_639_2 (string) = language code, default eng (english)
+*/
+
+let analyze = (word, ISO_639_2 = "eng") => {
   return word.length;
-}
-module.exports = keystrokeCounter;
+};
+
+let more = () => {};
+
+module.exports = { analyze, more };
