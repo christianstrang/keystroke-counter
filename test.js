@@ -6,6 +6,7 @@ const keystrokeCounter = require("./index");
 //console.log(keystrokeCounter.analyze("ÂÊÎÔÛÄËÏÜäëïüÿ", "fre")); // 42
 //console.log(keystrokeCounter.analyze("ÀÈÙÇÉ", "fre")); // 20
 //console.log(keystrokeCounter.analyze("ŒœŸ", "fre")); // 15
+console.log(keystrokeCounter.analyze("Œdipe", "fre")); // 9
 
 //console.log(keystrokeCounter.analyze("对不起", "chi")); // 15
 //console.log(keystrokeCounter.analyze("있다", "kor")); // 6

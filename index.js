@@ -23,42 +23,19 @@ let analyze = (word, ISO_639_2 = "eng") => {
 
   // https://www.loc.gov/standards/iso639-2/php/code_list.php
   switch (ISO_639_2) {
-    case "eng": // english
-      // already handled above
+    case "cat": // catalan
+      keystrokes += count(word, /[àèòéíóúÇ]/gu);
+      keystrokes += count(word, /[ÀÈÒÉÍÓÚïü]/gu) * 2;
+      keystrokes += count(word, /[ÏÜ]/gu) * 3;
       break;
-    case "ger": // german
-      keystrokes += count(word, /[ÄÖÜ]/gu); //äöü: lowercase letters are already counted above
+    case "chi": // simplified chinese, traditional chinese
+      // just count every character as 5 keystrokes, multiply with 4 as we already counted 1 above
+      keystrokes += word.length * 4;
       break;
-    case "fre": // french
-      keystrokes += count(word, /[âêîôû]/gu);
-      keystrokes += count(word, /[ÂÊÎÔÛÄËÏÜäëïüÿ]/gu) * 2; // 3 keystrokes needed, therefore times 2 + the length of the string from above
-      keystrokes += count(word, /[ÀÈÙÇÉ]/gu) * 3; // 4 keystrokes needed, therefore times 3 + the length of the string from above
-      keystrokes += count(word, /[ŒœŸ]/gu) * 4; // 5 keystrokes needed, therefore times 4 + the length of the string from above
-      break;
-    case "por": // portuguese
-      keystrokes += count(word, /[ãõáéíóú]/gu);
-      keystrokes += count(word, /[àâêîôû]/gu) * 2;
-      break;
-    case "spa": // spanish
-      keystrokes += count(word, /[áéíóúÑª]/gu);
-      keystrokes += count(word, /[ÁÉÍÓÚü]/gu) * 2;
-      keystrokes += count(word, /[Ü]/gu) * 3;
-      break;
-    case "tur": // turkish
-      keystrokes += count(word, /[ÖÜÇŞĞİ]/gu);
-      break;
-    case "vie": // vietnamese
-      keystrokes += count(word, /[ăâáàạảãđéèẻẽẹêíìỉĩịôơóòỏõọưúùủũụýỳỷỹỵ]/gu);
-      keystrokes += count(word, /[ắằặẳẵấầậẩẫếềểễệốồổỗộớờởỡợứừửữự]/gu) * 2;
-      break;
-    case "pol": // polish
-      keystrokes += count(word, /[ąćęłńóśźż]/gu);
-      break;
-    case "rum": // romanian
-      keystrokes += count(word, /[ăâîșț]/gu);
-      break;
-    case "per": // persian
-      keystrokes += count(word, /[ژآء ّ َ ُ ِ]/gu);
+    case "cze": // czech
+      keystrokes += count(word, /[ó]/gu);
+      keystrokes += count(word, /[ďťňÁÉÍÓÚÝ]/gu) * 2;
+      keystrokes += count(word, /[ĚŠČŘŽŇŤĎŮ]/gu) * 3;
       break;
     case "dan": // danish
       keystrokes += count(word, /[ÆØÅ]/gu);
@@ -66,32 +43,25 @@ let analyze = (word, ISO_639_2 = "eng") => {
     case "dut": // dutch
       keystrokes += count(word, /[é]/gu);
       break;
-    case "ita": // italian
-      keystrokes += count(word, /[é]/gu);
-      break;
-    case "cat": // catalan
-      keystrokes += count(word, /[àèòéíóúÇ]/gu);
-      keystrokes += count(word, /[ÀÈÒÉÍÓÚïü]/gu) * 2;
-      keystrokes += count(word, /[ÏÜ]/gu) * 3;
+    case "eng": // english
+      // already handled above
       break;
     case "epo": // esperanto
       keystrokes += count(word, /[ĉŭŝĝĵĥ]/gu);
+      break;
+    case "fre": // french
+      keystrokes += count(word, /[âêîôû]/gu);
+      keystrokes += count(word, /[ÂÊÎÔÛÄËÏÜäëïüÿ]/gu) * 2; // 3 keystrokes needed, therefore times 2 + the length of the string from above
+      keystrokes += count(word, /[ÀÈÙÇÉ]/gu) * 3; // 4 keystrokes needed, therefore times 3 + the length of the string from above
+      keystrokes += count(word, /[ŒœŸ]/gu) * 4; // 5 keystrokes needed, therefore times 4 + the length of the string from above
+      break;
+    case "ger": // german
+      keystrokes += count(word, /[ÄÖÜ]/gu); //äöü: lowercase letters are already counted above
       break;
     case "gre": // greek
       keystrokes += count(word, /[άήίώόύέΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ]/gu);
       keystrokes += count(word, /[ϊϋΐΰΆΉΊΏΌΎΈ]/gu) * 2;
       keystrokes += count(word, /[ΪΫ]/gu) * 3;
-      break;
-    case "cze": // czech
-      keystrokes += count(word, /[ó]/gu);
-      keystrokes += count(word, /[ďťňÁÉÍÓÚÝ]/gu) * 2;
-      keystrokes += count(word, /[ĚŠČŘŽŇŤĎŮ]/gu) * 3;
-      break;
-    case "lav": // latvian
-      keystrokes += count(word, /[ēūīāšģķļžčņ]/gu);
-      break;
-    case "lit": // lithuanian
-      keystrokes += count(word, /[ąčęėįšųūž]/gu);
       break;
     case "hin": // hindi
       keystrokes += count(
@@ -103,9 +73,8 @@ let analyze = (word, ISO_639_2 = "eng") => {
       keystrokes += count(word, /[éúíóáý]/gu);
       keystrokes += count(word, /[ÉÝÚÍÓÁ]/gu) * 2;
       break;
-    case "chi": // simplified chinese, traditional chinese
-      // just count every character as 5 keystrokes, multiply with 4 as we already counted 1 above
-      keystrokes += word.length * 4;
+    case "ita": // italian
+      keystrokes += count(word, /[é]/gu);
       break;
     case "jpn": // japanese
       // instead of individual characters, we just take a look at the whole word for keystrokes calculation
@@ -522,6 +491,37 @@ let analyze = (word, ISO_639_2 = "eng") => {
       };
       keystrokes =
         typeof korean_words[word] === "undefined" ? 0 : korean_words[word];
+      break;
+    case "lav": // latvian
+      keystrokes += count(word, /[ēūīāšģķļžčņ]/gu);
+      break;
+    case "lit": // lithuanian
+      keystrokes += count(word, /[ąčęėįšųūž]/gu);
+      break;
+    case "per": // persian
+      keystrokes += count(word, /[ژآء ّ َ ُ ِ]/gu);
+      break;
+    case "pol": // polish
+      keystrokes += count(word, /[ąćęłńóśźż]/gu);
+      break;
+    case "por": // portuguese
+      keystrokes += count(word, /[ãõáéíóú]/gu);
+      keystrokes += count(word, /[àâêîôû]/gu) * 2;
+      break;
+    case "rum": // romanian
+      keystrokes += count(word, /[ăâîșț]/gu);
+      break;
+    case "spa": // spanish
+      keystrokes += count(word, /[áéíóúÑª]/gu);
+      keystrokes += count(word, /[ÁÉÍÓÚü]/gu) * 2;
+      keystrokes += count(word, /[Ü]/gu) * 3;
+      break;
+    case "tur": // turkish
+      keystrokes += count(word, /[ÖÜÇŞĞİ]/gu);
+      break;
+    case "vie": // vietnamese
+      keystrokes += count(word, /[ăâáàạảãđéèẻẽẹêíìỉĩịôơóòỏõọưúùủũụýỳỷỹỵ]/gu);
+      keystrokes += count(word, /[ắằặẳẵấầậẩẫếềểễệốồổỗộớờởỡợứừửữự]/gu) * 2;
       break;
     default:
       throw new Error('language "' + ISO_639_2 + '" not supported');
