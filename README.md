@@ -2,14 +2,6 @@
 
 Keystroke Counter is a library to analyze how many keystrokes a word in each language takes.
 
-## Installation
-
-Use the package manager [npm](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-npm i keystroke-counter
-```
-
 ## Usage
 
 ```js
@@ -52,7 +44,7 @@ Vietnamese
 
 ## Attention
 
-Languages japanese and korean have a word based calculation, so if the word is not included, the calculate keystrokes will be zero. For chinese the calculation is greatly simplified, as each character just counts as 5. Please let me know if there is a more accurate way to calculate the keystrokes for these languages.
+Languages japanese and korean have a word based calculation, so if the word is not included, the calculated keystrokes will be zero. For chinese the calculation is greatly simplified, as each character just counts as 5. Please let me know if there is a more accurate way to calculate the keystrokes for these languages.
 
 ## Contributing
 
